@@ -1,15 +1,17 @@
-import './App.css'
+import React from 'react';
+import Navbar from './components/Navbar';
 
 function App() {
-  
-
   return (
-    <>
-      hello world
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ab harum quae et voluptates, deleniti, dicta dignissimos dolores magnam reprehenderit accusantium, quaerat nihil consectetur. Esse eum eveniet vitae nisi explicabo.
-      
-    </>
-  )
+    <div>
+      <Navbar />
+      <div style={{ paddingTop: '70px', padding: '20px' }}>
+        <h1>Welcome to yaatriGo</h1>
+        <p>Your journey, our responsibility!</p>
+        
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,105 @@
+
+.navbar {
+  background-color: #213555;
+  color: #F5EFE7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;   /* More spacing */
+  height: 80px;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-brand {
+   color: white;
+  text-decoration: none; 
+  font-size: 29px;
+  font-weight: bold;
+  margin-left: 4rem; /* Push logo slightly right */
+  font-family: quicksand;
+}
+
+/* Align "Search Journey" slightly left */
+.search-link {
+  margin-right: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4rem;
+  margin-right: 7rem;
+}
+
+.nav-links a {
+  color: #F5EFE7;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hover animation (underline + slight scale) */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: #F5EFE7;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  transform: scale(1.05);
+}
+
+/* Hamburger menu */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #F5EFE7;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #213555;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  .search-link {
+    margin-right: 0;
+  }
+}
