@@ -1,36 +1,38 @@
+/* Reset issue causing horizontal scroll */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
 .navbar {
-  background-color: #213555;
+  background-color: #1B2430;  /* Dark, premium road-trip vibe */
   color: #F5EFE7;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;   /* More spacing */
+  padding: 0 2rem;
   height: 80px;
   position: sticky;
-  width: 100vw;
   top: 0;
   z-index: 999;
+  max-width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand {
-   color: white;
-  text-decoration: none; 
-  font-size: 29px;
+  color: #FFD369;
+  text-decoration: none;
+  font-size: 28px;
   font-weight: bold;
-  margin-left: 4rem; /* Push logo slightly right */
-  font-family: quicksand;
-}
-
-/* Align "Search Journey" slightly left */
-.search-link {
-  margin-right: 20px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .nav-links {
   display: flex;
-  gap: 4rem;
-  margin-right: 7rem;
+  gap: 2.5rem;
+  margin-right: 2rem;
+  align-items: center;
 }
 
 .nav-links a {
@@ -42,15 +44,14 @@
   transition: all 0.3s ease;
 }
 
-/* Hover animation (underline + slight scale) */
 .nav-links a::after {
   content: '';
   position: absolute;
   width: 0%;
   height: 2px;
   left: 0;
-  bottom: -5px;
-  background-color: #F5EFE7;
+  bottom: -6px;
+  background-color: #FFD369;
   transition: width 0.3s ease;
 }
 
@@ -59,10 +60,15 @@
 }
 
 .nav-links a:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  color: #FFD369;
 }
 
-/* Hamburger menu */
+/* Search button spacing */
+.search-link {
+  margin-right: 0;
+}
+
 .menu-icon {
   display: none;
   flex-direction: column;
@@ -72,23 +78,24 @@
 .menu-icon .bar {
   width: 25px;
   height: 3px;
-  background-color: #F5EFE7;
+  background-color: #FFD369;
   margin: 4px 0;
   transition: 0.3s;
 }
 
-/* Mobile styles */
+/* Mobile view */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: #213555;
+    background-color: #1B2430;
     flex-direction: column;
     text-align: center;
     display: none;
-    padding: 10px 0;
+    padding: 1rem 0;
+    gap: 1.5rem;
   }
 
   .nav-links.active {
@@ -99,7 +106,7 @@
     display: flex;
   }
 
-  .search-link {
-    margin-right: 0;
+  .navbar-brand {
+    margin-left: 0;
   }
 }
