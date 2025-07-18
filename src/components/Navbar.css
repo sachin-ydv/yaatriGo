@@ -8,7 +8,7 @@
   padding: 0 40px;   /* More spacing */
   height: 80px;
   position: sticky;
-  width: 100%;
+  width: 100vw;
   top: 0;
   z-index: 999;
 }
