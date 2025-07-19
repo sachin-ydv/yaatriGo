@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-  background-color: #1B2430;  /* Dark, premium road-trip vibe */
+  background-color: #1a2f4b;  /* Dark, premium road-trip vibe */
   color: #F5EFE7;
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@ body {
 }
 
 .navbar-brand {
-  color: #FFD369;
+  color: white;
   text-decoration: none;
   font-size: 28px;
   font-weight: bold;
