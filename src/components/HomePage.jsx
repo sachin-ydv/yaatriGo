@@ -113,7 +113,7 @@ const HomePage = () => {
 
 
     <div className="why-choose-us-section">
-      <h2 className="section-title">🚀 Why Choose <span id='yaatriGo-title'>yaatriGo</span> </h2>
+      <h2 className="section-title">🚀 Why Choose <span id='yaatriGo-title'>yaatriGo</span> ? </h2>
       <div className="features-grid">
         {features.map((feature, index) => (
           <div

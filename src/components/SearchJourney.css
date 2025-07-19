@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --teal: #04756f;
+  --teal-dark: #024e4b;
+  --saffron: #f97316;
+  --saffron-dark: #c2410c;
+  --deep-blue: #0a3d62;
+  --off-white: rgba(255, 255, 255, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --shadow-light: rgba(249, 115, 22, 0.3);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.page-container {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a3d62, #04756f);
+  min-height: 100vh;
+  padding: 3rem 1rem 4rem;
+  color: var(--deep-blue);
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bgPulse 15s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Search container to center search bar */
+.search-container {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 120;
+}
+
+/* Search bar with glassmorphism */
+.search-bar {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 1.2rem 2rem;
+  box-shadow:
+    0 8px 32px rgba(4, 117, 111, 0.35),
+    inset 0 0 30px rgba(255, 255, 255, 0.12);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.search-bar:hover {
+  box-shadow:
+    0 12px 48px rgba(4, 117, 111, 0.6),
+    inset 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.input-group {
+  flex: 1;
+  position: relative;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  color: var(--saffron);
+  font-size: 1.4rem;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.9rem 1rem 0.9rem 48px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--deep-blue);
+  background: var(--off-white);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.input-group input::placeholder {
+  color: var(--deep-blue);
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--saffron);
+  box-shadow: 0 0 12px var(--saffron);
+}
+
+/* Search button styling */
+.search-btn {
+  background: var(--saffron);
+  border: none;
+  padding: 1rem 2.4rem;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow:
+    0 6px 24px var(--shadow-light);
+  transition:
+    background-color 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.search-btn:hover,
+.search-btn:focus-visible {
+  background: var(--saffron-dark);
+  box-shadow:
+    0 10px 40px var(--shadow-light);
+  transform: scale(1.08);
+  outline: none;
+}
+
+/* Filter button below search bar on right */
+.filter-btn {
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  background: var(--teal);
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.6rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 10px 25px rgba(4, 117, 111, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  z-index: 130;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.filter-btn:hover,
+.filter-btn:focus-visible {
+  background: var(--teal-dark);
+  transform: scale(1.1);
+  outline: none;
+}
+
+.filter-btn .icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
+}
+
+/* Filters drawer with glass and slide */
+.filters-drawer {
+  position: fixed;
+  top: 5.5rem;
+  right: -350px;
+  width: 320px;
+  height: calc(100vh - 5.5rem);
+  background: var(--glass-bg);
+  backdrop-filter: saturate(200%) blur(20px);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.35);
+  padding: 2rem 2rem 3rem;
+  border-radius: 20px 0 0 20px;
+  color: var(--deep-blue);
+  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 125;
+  overflow-y: auto;
+  user-select: none;
+}
+
+.filters-drawer.open {
+  right: 0;
+  user-select: auto;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  color: var(--teal-dark);
+}
+
+.filters-header h2 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: 1.5px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--saffron);
+  cursor: pointer;
+  font-size: 1.9rem;
+  padding: 0;
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.close-btn:hover,
+.close-btn:focus-visible {
+  color: var(--saffron-dark);
+  outline: none;
+}
+
+.filter-item {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-item label {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--teal-dark);
+}
+
+.filter-item select,
+.filter-item input {
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--teal);
+  font-size: 1.05rem;
+  font-weight: 600;
+  outline: none;
+  box-sizing: border-box;
+  color: var(--deep-blue);
+  background: var(--off-white);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.filter-item select:focus,
+.filter-item input:focus {
+  border-color: var(--saffron);
+  box-shadow: 0 0 12px var(--saffron);
+}
+
+.input-icon {
+  color: var(--saffron);
+  margin-left: 6px;
+  font-size: 1.3rem;
+}
+
+/* Apply filters button */
+.apply-filters {
+  width: 100%;
+  padding: 1rem 0;
+  background: var(--saffron);
+  border: none;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+  box-shadow:
+    0 8px 28px var(--shadow-light);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.apply-filters:hover,
+.apply-filters:focus-visible {
+  background: var(--saffron-dark);
+  box-shadow:
+    0 14px 38px var(--shadow-light);
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Results section styling */
+.results-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 350px;
+  padding: 0 1rem;
+  color: var(--off-white);
+  user-select: none;
+}
+
+.no-results {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 4rem;
+  color: #ffc078cc;
+  text-shadow: 1px 1px 3px #7a3e00cc;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 2.5rem;
+}
+
+/* Trip cards with frosted glass style */
+.trip-card {
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-radius: 22px;
+  box-shadow:
+    0 12px 36px rgba(4, 117, 111, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  outline-offset: 5px;
+  user-select: none;
+}
+
+.trip-card:hover,
+.trip-card:focus-visible {
+  transform: translateY(-12px);
+  box-shadow:
+    0 22px 58px rgba(4, 117, 111, 0.6),
+    inset 0 0 14px rgba(255, 255, 255, 0.4);
+  outline: none;
+}
+
+.trip-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: filter 0.35s ease;
+}
+
+.trip-card:hover .trip-image {
+  filter: brightness(1);
+}
+
+.card-content {
+  padding: 1.4rem 1.8rem 2rem;
+  color: var(--deep-blue);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content h3 {
+  margin: 0 0 0.75rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  color: var(--teal-dark);
+}
+
+.card-content p {
+  margin: 0.4rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #15504d;
+}
+
+.card-content .trip-details {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #066763cc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  .search-container {
+    margin-bottom: 1.8rem;
+  }
+  .search-bar {
+    max-width: 100%;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .filter-btn {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 0;
+    padding: 0;
+  }
+
+  .filter-btn .icon {
+    font-size: 1.8rem;
+  }
+
+  .filters-drawer {
+    top: 4.8rem;
+    width: 280px;
+    height: calc(100vh - 4.8rem);
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Keep your existing styles but adjust these parts */
+
+/* Container for search bar to manage layering */
+.search-container {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2.5rem; /* ✅ Add proper spacing here */
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 120;
+}
+
+
+/* Shrink card size */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.7rem;
+  margin-top: 6rem; /* ✅ Provide natural spacing */
+}
+
+
+/* Add overlap layering */
+.trip-card {
+  width: 260px;
+  margin: 0 auto;
+}
+
+/* Enhanced card style adjustments */
+.trip-card {
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.trip-card:hover,
+.trip-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.35),
+    inset 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.trip-image {
+  height: 160px;
+}
+.card-content {
+  padding: 1.1rem 1.4rem 1.6rem;
+}
+.card-content h3 {
+  font-size: 1.25rem;
+}
+.card-content p {
+  font-size: 0.95rem;
+}
+
+/* Adjustments for mobile */
+@media (max-width: 600px) {
+  .cards-container {
+    margin-top: -60px;
+  }
+  .trip-card {
+    width: 100%;
+    max-width: 300px;
+  }
+  .filter-btn {
+    bottom: 1rem;
+  }
+}
