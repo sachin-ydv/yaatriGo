@@ -521,3 +521,50 @@
     bottom: 1rem;
   }
 }
+
+.book-car-btn {
+  position: relative;
+  padding: 0.6rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.book-car-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+.book-car-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: all 0.4s ease;
+}
+
+.book-car-btn:hover::after {
+  left: 150%;
+}
+
+.book-car-btn .icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.book-car-btn:hover .icon {
+  transform: translateX(4px);
+}

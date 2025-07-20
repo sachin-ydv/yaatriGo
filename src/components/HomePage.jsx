@@ -4,6 +4,8 @@ import manaliimg from '../assets/manali.jpg';
 import goaimg from '../assets/goa.jpg'; 
 import ladakhimg from '../assets/ladakh.jpg';
 
+import { NavLink } from 'react-router-dom';
+
 const HomePage = () => {
 
     
@@ -80,12 +82,12 @@ const HomePage = () => {
       <div className="hero-content">
         <h1 className="fade-in-left">yaatriGo</h1>
         <p className="fade-in-left delay-1">Explore the open road with us</p>
-        <button className="explore-button fade-in-left delay-2">Explore trips</button>
+        <NavLink to="/SearchJourney" className="explore-button fade-in-left delay-2">Explore trips</NavLink>
       </div>
     </div>
     <div className="LoginSection fade-in-top">
-      <button className="login-btn">Log In</button>
-      <button className="signin-btn">Sign In</button>
+      <NavLink to="/SignIn" className="login-btn">Log In</NavLink>
+      <NavLink to="/SignIn" className="signin-btn">Sign In</NavLink>
     </div>
 
 
@@ -103,7 +105,7 @@ const HomePage = () => {
             <div className="trip-info">
               <h3>{trip.name}</h3>
               <p>{trip.location}</p>
-              <button className="see-trip-btn">See Trip</button>
+              <NavLink to="/SearchJourney" className="see-trip-btn">See Trip</NavLink>
             </div>
           </div>
         ))}

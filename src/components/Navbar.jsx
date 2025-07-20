@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">yaatriGo</div>
+      <NavLink to='/' className="navbar-brand">yaatriGo</NavLink >
 
       <div className={`nav-links ${isOpen ? 'active' : ''}`}>
         <NavLink to="/SearchJourney" className="search-link">
